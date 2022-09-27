@@ -11,9 +11,10 @@ export const Title: VFC<Props> = ({ first, last }) => {
   return (
     <View style={tw('flex-row my-6 px-1')}>
       <View
-        style={
-          (tw('flex-1 mr-1 border self-center'), { borderColor: '#5f9ea0' })
-        }
+        style={[
+          tw('flex-1 mr-1 border self-center'),
+          { borderColor: '#5f9ea0' },
+        ]}
       />
       <Text style={tw('text-gray-700 text-3xl font-extrabold')}>
         {`$first`}

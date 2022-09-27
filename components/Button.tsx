@@ -16,7 +16,10 @@ export const Button: VFC<Props> = ({
   onPress,
 }) => {
   return (
-    <TouchableOpacity style={tw(`mb-4 mx-3 rounded-3xl w-11/12 ${bgColor}`)}>
+    <TouchableOpacity
+      style={tw(`mb-4 mx-3 rounded-3xl w-11/12 ${bgColor}`)}
+      onPress={onPress}
+    >
       <Text style={tw(`text-center text-lg font-semibold p-2 ${titleColor}`)}>
         {title}
       </Text>
