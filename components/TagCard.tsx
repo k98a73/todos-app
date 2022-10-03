@@ -8,8 +8,10 @@ import {
   Text,
   TouchableOpacity,
 } from 'react-native';
+import { useDispatch } from 'react-redux';
 import tw from 'tailwind-rn';
 import { useDeleteTag } from '../hooks/useDeleteTag';
+import { setSelectedTag } from '../slices/todoSlice';
 import { RootStackParamList } from '../types/types';
 
 type Props = {
@@ -20,9 +22,15 @@ type Props = {
 const { width } = Dimensions.get('window');
 
 const TagCardMemo: VFC<Props> = ({ id, name }) => {
+  const dispatch = useDispatch();
   const navigation =
     useNavigation<NativeStackNavigationProp<RootStackParamList>>();
   const { deleteTag, deleteErr } = useDeleteTag();
+
+  const navToTaskStack = () => {
+    dispatch(setSelectedTag({ id, name }));
+    navigation.navigate('TaskStack');
+  };
 
   const deleteTagItem = async (idx: string) => {
     Alert.alert('Deleting', 'Are you sure?', [
@@ -55,6 +63,7 @@ const TagCardMemo: VFC<Props> = ({ id, name }) => {
           shadowRadius: 2,
         },
       ]}
+      onPress={navToTaskStack}
       onLongPress={() => deleteTagItem(id)}
     >
       <Text
