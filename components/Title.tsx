@@ -17,7 +17,7 @@ export const Title: VFC<Props> = ({ first, last }) => {
         ]}
       />
       <Text style={tw('text-gray-700 text-3xl font-extrabold')}>
-        {`${first}`}
+        {`${first} `}
         <Text style={[tw('font-light'), { color: '#5f9ea0' }]}>{last}</Text>
       </Text>
       <View
