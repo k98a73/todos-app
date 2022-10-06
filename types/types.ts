@@ -12,7 +12,7 @@ export type Tag = {
 export type Task = {
   id: string;
   title: string;
-  complete: boolean;
+  completed: boolean;
   createdAt: string;
 };
 

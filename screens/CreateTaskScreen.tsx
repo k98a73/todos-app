@@ -18,7 +18,7 @@ type Props = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'CreateTask'>;
 };
 
-export const createTaskScreen: VFC<Props> = ({ navigation }) => {
+export const CreateTaskScreen: VFC<Props> = ({ navigation }) => {
   const { createErr, editedTask, createTask, onChangeTask, resetInput } =
     useCreateTask({ navigation });
   return (

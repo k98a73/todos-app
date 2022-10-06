@@ -3,7 +3,7 @@ import { RootState } from '../store';
 import { Tag, Task } from '../types/types';
 
 type State = {
-  editedTask: Omit<Task, 'complete' | 'createdAt'>;
+  editedTask: Omit<Task, 'completed' | 'createdAt'>;
   selectedTag: Omit<Tag, 'createdAt'>;
 };
 
@@ -18,7 +18,7 @@ export const todoSlice = createSlice({
   reducers: {
     setEditTask: (
       state,
-      action: PayloadAction<Omit<Task, 'complete' | 'createdAt'>>,
+      action: PayloadAction<Omit<Task, 'completed' | 'createdAt'>>,
     ) => {
       state.editedTask = action.payload;
     },
