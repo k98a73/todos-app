@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { memo, VFC } from 'react';
+import React, { memo, VFC } from 'react';
 import {
   Alert,
   Dimensions,
@@ -72,7 +72,7 @@ const TagCardMemo: VFC<Props> = ({ id, name }) => {
           {
             fontFamily: Platform.select({
               ios: 'GillSans-Italic',
-              android: ' sans-serif-condensed',
+              android: 'sans-serif-condensed',
             }),
           },
         ]}

@@ -17,7 +17,7 @@ export const useToggleDeleteTask = () => {
       setToggleErr('');
       try {
         await setDoc(
-          doc(db, 'users', user.uid, 'tags', tag.id, idx),
+          doc(db, 'users', user.uid, 'tags', tag.id, 'tasks', idx),
           {
             completed: !bool,
           },

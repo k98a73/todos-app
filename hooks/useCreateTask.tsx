@@ -7,7 +7,7 @@ import {
   resetEditedTask,
   selectEditedTask,
   selectTag,
-  setEditTask,
+  setEditedTask,
 } from '../slices/todoSlice';
 import { selectUser } from '../slices/userSlice';
 import { RootStackParamList } from '../types/types';
@@ -26,9 +26,8 @@ export const useCreateTask = ({ navigation }: Props) => {
   const resetInput = () => {
     dispatch(resetEditedTask());
   };
-  const onChangeTask = (txt: string) => {
-    dispatch(setEditTask({ ...editedTask, title: txt }));
-  };
+  const onChangeTask = (txt: string) =>
+    dispatch(setEditedTask({ ...editedTask, title: txt }));
 
   const createTask = async () => {
     setCreateErr('');
@@ -39,7 +38,7 @@ export const useCreateTask = ({ navigation }: Props) => {
           {
             title: editedTask.title,
             completed: false,
-            createAt: serverTimestamp(),
+            createdAt: serverTimestamp(),
           },
         );
         dispatch(resetEditedTask());

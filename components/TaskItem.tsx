@@ -1,13 +1,13 @@
 import tw from 'tailwind-rn';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
-import { memo, VFC } from 'react';
+import React, { memo, VFC } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { RootStackParamList } from '../types/types';
 import { Text, TouchableOpacity, View } from 'react-native';
 import { IconButton } from './IconButton';
-import { setEditTask } from '../slices/todoSlice';
+import { setEditedTask } from '../slices/todoSlice';
 
 type Props = {
   id: string;
@@ -51,13 +51,13 @@ const TaskItemMemo: VFC<Props> = ({
         </View>
         <TouchableOpacity
           onLongPress={() => {
-            dispatch(setEditTask({ id, title }));
+            dispatch(setEditedTask({ id, title }));
             // navigation.navigate('EditTask');
           }}
         >
           <Text
             style={[
-              tw('ml-1 leading-4'),
+              tw('mt-1 leading-4'),
               {
                 textDecorationLine: completed ? 'line-through' : 'none',
                 color: completed ? 'gray' : 'black',

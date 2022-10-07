@@ -16,7 +16,7 @@ export const todoSlice = createSlice({
   name: 'todo',
   initialState,
   reducers: {
-    setEditTask: (
+    setEditedTask: (
       state,
       action: PayloadAction<Omit<Task, 'completed' | 'createdAt'>>,
     ) => {
@@ -35,7 +35,7 @@ export const todoSlice = createSlice({
 });
 
 export const {
-  setEditTask,
+  setEditedTask,
   resetEditedTask,
   setSelectedTag,
   resetSelectedTag,

@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import React, { VFC } from 'react';
 import { GestureResponderEvent, Text, TouchableOpacity } from 'react-native';
 import tw from 'tailwind-rn';
 
@@ -14,15 +14,13 @@ export const Button: VFC<Props> = ({
   bgColor = 'bg-gray-500',
   titleColor = 'text-white',
   onPress,
-}) => {
-  return (
-    <TouchableOpacity
-      style={tw(`mb-4 mx-3 rounded-3xl w-11/12 ${bgColor}`)}
-      onPress={onPress}
-    >
-      <Text style={tw(`text-center text-lg font-semibold p-2 ${titleColor}`)}>
-        {title}
-      </Text>
-    </TouchableOpacity>
-  );
-};
+}) => (
+  <TouchableOpacity
+    style={tw(`mb-4 mx-3 rounded-3xl w-11/12 ${bgColor}`)}
+    onPress={onPress}
+  >
+    <Text style={tw(`text-center text-lg font-semibold p-2 ${titleColor}`)}>
+      {title}
+    </Text>
+  </TouchableOpacity>
+);

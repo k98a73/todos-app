@@ -1,4 +1,4 @@
-import { VFC } from 'react';
+import React, { VFC } from 'react';
 import { TextInput, View } from 'react-native';
 import tw from 'tailwind-rn';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -27,29 +27,27 @@ export const InputField: VFC<Props> = ({
   autoFocus = false,
   value,
   onChangeText,
-}) => {
-  return (
-    <View style={tw('mb-5 mx-3 flex-row p-3 w-11/12 bg-white rounded')}>
-      {leftIcon ? (
-        <MaterialCommunityIcons
-          name={leftIcon}
-          size={20}
-          color={iconColor}
-          style={tw('mr-3')}
-        />
-      ) : null}
-      <TextInput
-        style={tw('w-full')}
-        onChangeText={onChangeText}
-        value={value}
-        keyboardType={keyboardType}
-        secureTextEntry={secureTextEntry}
-        textContentType={textContentType}
-        autoCapitalize="none"
-        autoFocus={autoFocus}
-        placeholder={placeholder}
-        placeholderTextColor={placeholderTextColor}
+}) => (
+  <View style={tw('mb-5 mx-3 flex-row p-3 w-11/12 bg-white rounded')}>
+    {leftIcon ? (
+      <MaterialCommunityIcons
+        name={leftIcon}
+        size={20}
+        color={iconColor}
+        style={tw('mr-3')}
       />
-    </View>
-  );
-};
+    ) : null}
+    <TextInput
+      style={tw('w-full')}
+      onChangeText={onChangeText}
+      value={value}
+      keyboardType={keyboardType}
+      secureTextEntry={secureTextEntry}
+      textContentType={textContentType}
+      autoCapitalize="none"
+      autoFocus={autoFocus}
+      placeholder={placeholder}
+      placeholderTextColor={placeholderTextColor}
+    />
+  </View>
+);

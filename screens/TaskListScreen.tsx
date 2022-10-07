@@ -1,19 +1,43 @@
-import { Text, SafeAreaView, View, TouchableOpacity } from 'react-native';
+import {
+  Text,
+  SafeAreaView,
+  View,
+  TouchableOpacity,
+  FlatList,
+} from 'react-native';
 import React, { VFC } from 'react';
-import { useSelector } from 'react-redux';
 import { MaterialIcons } from '@expo/vector-icons';
 import tw from 'tailwind-rn';
-import { selectTag } from '../slices/todoSlice';
 import { Title } from '../components/Title';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import { RootStackParamList } from '../types/types';
+import { RootStackParamList, Task } from '../types/types';
+import { useToggleDeleteTask } from '../hooks/useToggleDeleteTask';
+import { useGetTasks } from '../hooks/useGetTasks';
+import { TaskItem } from '../components/TaskItem';
+
+type Item = {
+  item: Task;
+};
 
 type Props = {
   navigation: NativeStackNavigationProp<RootStackParamList, 'TaskList'>;
 };
 
 export const TaskListScreen: VFC<Props> = ({ navigation }) => {
-  const tag = useSelector(selectTag);
+  const { tag, deleteTask, toggleCompleted } = useToggleDeleteTask();
+  const { tasks, getErr } = useGetTasks();
+  const tasksKeyExtractor = (item: Task) => item.id;
+  const tasksRenderItem = ({ item }: Item) => (
+    <TaskItem
+      id={item.id}
+      title={item.title}
+      createdAt={item.createdAt}
+      completed={item.completed}
+      toggleCompleted={toggleCompleted}
+      deleteTask={deleteTask}
+    />
+  );
+
   return (
     <SafeAreaView style={tw('flex-1')}>
       <Title first="Tasks" last={tag.name} />
@@ -22,6 +46,17 @@ export const TaskListScreen: VFC<Props> = ({ navigation }) => {
           <MaterialIcons name="playlist-add" size={40} color="#5f9ea0" />
         </TouchableOpacity>
         <Text style={tw('text-gray-700 mt-2 mb-5')}>Add task</Text>
+        {getErr !== '' && (
+          <Text style={tw('text-red-500 my-5 font-semibold')}>{getErr}</Text>
+        )}
+      </View>
+      <View style={[tw('flex-1 m-2')]}>
+        <FlatList
+          data={tasks}
+          keyExtractor={tasksKeyExtractor}
+          keyboardShouldPersistTaps="always"
+          renderItem={tasksRenderItem}
+        />
       </View>
     </SafeAreaView>
   );
