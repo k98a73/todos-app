@@ -1,6 +1,7 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { VFC } from 'react';
 import { CreateTaskScreen } from '../screens/CreateTaskScreen';
+import { EditTaskScreen } from '../screens/EditTaskScreen';
 import { TaskListScreen } from '../screens/TaskListScreen';
 import { RootStackParamList } from '../types/types';
 
@@ -19,6 +20,7 @@ export const TaskStackNavigator: VFC = () => {
         }}
       >
         <Stack.Screen name="CreateTask" component={CreateTaskScreen} />
+        <Stack.Screen name="EditTask" component={EditTaskScreen} />
       </Stack.Group>
     </Stack.Navigator>
   );

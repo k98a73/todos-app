@@ -52,7 +52,7 @@ const TaskItemMemo: VFC<Props> = ({
         <TouchableOpacity
           onLongPress={() => {
             dispatch(setEditedTask({ id, title }));
-            // navigation.navigate('EditTask');
+            navigation.navigate('EditTask');
           }}
         >
           <Text
